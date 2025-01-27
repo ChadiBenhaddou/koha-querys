@@ -7,3 +7,9 @@ WHERE i.enumchron REGEXP '^ع\\. *\\([0-9]{4}\\)$';
 #synohony selection 
 select items.id, items.call_sequence, callnum.shelving_key, callnum.call_sequence, items.catalog_key, callnum.catalog_key from items, callnum 
 where items.catalog_key=callnum.catalog_key and items.call_sequence=callnum.call_sequence;
+
+
+#Selecting the wrong enumchron 
+SELECT * from items i WHERE i.enumchron REGEXP '^ع\\. *\\([0-9]{4}\\)$'  or 
+i.enumchron REGEXP '^NO\\. *\\([0-9]{4}\\)$' or i.enumchron REGEXP '^SUPPL. NO\\. *\\([0-9]{4}\\)$' or i.enumchron like "%()%"
+or i.enumchron like "%()%" ;
